@@ -4,5 +4,6 @@ module.exports = {
   puppeteerOptions: {
     headless: true,
     timeout: 0
-  }
+  },
+  readStoriesTimeout: 5000000
 }
