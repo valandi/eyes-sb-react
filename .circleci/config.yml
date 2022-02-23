@@ -52,7 +52,7 @@ jobs:
             docker build -t app$APPLITOOLS_BATCH_ID .
             docker run -dp 8080:8080 --name app$APPLITOOLS_BATCH_ID  app$APPLITOOLS_BATCH_ID 
             docker exec app$APPLITOOLS_BATCH_ID curl --retry 10 --retry-connrefused http://localhost:8080
-            npx eyes-storybook -u http://172.17.0.2:8080
+            npx eyes-storybook -u http://localhost:8080
 workflows:
     build-and-test:
       jobs:
