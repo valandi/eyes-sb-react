@@ -28,8 +28,6 @@ jobs:
             npx build-storybook
             docker build -t app:$APPLITOOLS_BATCH_ID .
             docker run -dp 8080:8080 app:$APPLITOOLS_BATCH_ID 
-            docker-machine ip
-            echo `docker-machine ip`
             npx eyes-storybook -u http://172.17.0.2:8080
 workflows:
     build-and-test:
