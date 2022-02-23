@@ -24,7 +24,9 @@ jobs:
           command: | 
             export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`
             echo $APPLITOOLS_BATCH_ID
+            echo "Installing deps"
             npm install
+            echo "building static storybook"
             npx build-storybook
             docker build -t app:$APPLITOOLS_BATCH_ID .
             docker run -dp 8080:8080 app:$APPLITOOLS_BATCH_ID
