@@ -11,13 +11,14 @@ jobs:
       name: node/default
     steps: 
       - setup_remote_docker
-      - browser-tools/install-browser-tools
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - checkout
       - run:
           name: Run Tests
           command: | 
+            google-chrome --version
+            chromedriver --version
             export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`
             echo $APPLITOOLS_BATCH_ID
             echo $APPLITOOLS_API_KEY
