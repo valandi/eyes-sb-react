@@ -52,7 +52,26 @@ jobs:
             docker run -dp 8080:8080 --name app$APPLITOOLS_BATCH_ID  app$APPLITOOLS_BATCH_ID 
             docker exec app$APPLITOOLS_BATCH_ID curl --retry 10 --retry-connrefused http://localhost:8080
             npx eyes-storybook -u http://localhost:8080
+  build-and-test-3:
+    executor:
+      name: node/default
+    steps: 
+      - setup_remote_docker
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - checkout
+      - run:
+          name: Start storybook service declared in docker-compose.yml
+          command: docker-compose up -d
+      - run:
+          name: Run Tests
+          command: | 
+            export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`
+            echo $APPLITOOLS_BATCH_ID
+            npm install
+            npx eyes-storybook -u https://localhost:8086 
+    
 workflows:
     build-and-test:
       jobs:
-        - build-and-test
+        - build-and-test-3
