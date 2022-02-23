@@ -28,7 +28,7 @@ jobs:
             npx build-storybook
             docker build -t app:$APPLITOOLS_BATCH_ID .
             docker run -dp 8080:8080 app:$APPLITOOLS_BATCH_ID
-            npx eyes-storybook -u https://localhost:8080
+            npx eyes-storybook -u http://localhost:8080
 workflows:
     build-and-test:
       jobs:
