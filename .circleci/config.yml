@@ -4,13 +4,16 @@ docker:
 orbs:
   node: circleci/node@5.0.0
   puppeteer: threetreeslight/puppeteer@0.1.2
+  browser-tools: circleci/browser-tools@1.2.4
 jobs:
   build-and-test:
     executor:
       name: node/default
-
     steps: 
       - setup_remote_docker
+      - browser-tools/install-browser-tools
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - checkout
       - run:
           name: Run Tests
