@@ -11,7 +11,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "start-storybook -p 8086 -s public",
     "build-storybook": "build-storybook -s public",
     "build-docker-image": "build-storybook -s public",
     "build-storybook-docker": "docker run -dp 8080:8080 getting-started",
