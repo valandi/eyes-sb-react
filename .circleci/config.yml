@@ -50,8 +50,7 @@ jobs:
             npx build-storybook
             docker build -t app$APPLITOOLS_BATCH_ID .
             docker run -dp 8086:8086 --name app$APPLITOOLS_BATCH_ID  app$APPLITOOLS_BATCH_ID 
-            docker exec -it app$APPLITOOLS_BATCH_ID npx eyes-storybook 
-            npx eyes-storybook -u http://localhost:8080
+            docker exec -it app$APPLITOOLS_BATCH_ID /bin/sh -c "cd project; npx eyes-storybook"  
   build-and-test-3:
     executor:
       name: node/default
