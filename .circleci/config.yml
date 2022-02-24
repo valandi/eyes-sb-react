@@ -27,7 +27,7 @@ jobs:
             echo "building static storybook"
             npx build-storybook
             docker build -t app:$APPLITOOLS_BATCH_ID .
-            docker run -dp 8080:8080 app:$APPLITOOLS_BATCH_ID 
+            docker run -dp 8086:8086 app:$APPLITOOLS_BATCH_ID 
   build-and-test-2:
     executor:
       name: node/default
